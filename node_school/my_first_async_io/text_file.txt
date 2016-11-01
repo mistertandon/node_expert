@@ -1,0 +1,16 @@
+var fs = require('fs'), lines_in_file;
+
+function trigger_read_line_api(callback) {
+    fs.readFile('text_file.txt', 'utf8', function (err, file_content) {
+        if (err) {
+            return err;
+        }
+        lines_in_file = file_content.split("\n").length;
+        callback();
+    });
+}
+function log_file_lines() {
+    console.log(lines_in_file);
+}
+
+trigger_read_line_api(log_file_lines);
